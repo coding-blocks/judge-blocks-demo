@@ -1744,3 +1744,11 @@ footer.bg-dark a {
     }
 }
     
+@media  (min-width: 970px){
+    #editor{
+        min-height: 510px;
+    }
+    #code_editor{
+        margin-bottom: 50px;
+    }
+}
