@@ -8,17 +8,21 @@
 var lang;
 var lang_sample;
 var ifLocalStorage=0;
+var ifUpload=0;
 function init() {
     if (lang == undefined || lang == 'c') {
         lang = 'c';
     }
-    lang_sample = lang_samples[lang];
-    ace.edit("editor").setValue(lang_sample);
+    if(!ifUpload) {
+        lang_sample = lang_samples[lang];
+        ace.edit("editor").setValue(lang_sample);
+    }
     console.log("Language = " + lang);
     if(!ifLocalStorage) {
         loadLocalStorage();
         ifLocalStorage=1;
     }
+    $("#panelLang").html(langName[lang]);
 }
 
 $('.changetheme').click(function (event) {
@@ -88,6 +92,7 @@ $(document).ready(function () {
         ace.edit("editor").setValue('');
         document.getElementById('test-input').value = "";
         localStorage.clear();
+        ifUpload=0;
     });
 
     $('.lang').click(function (event) {
@@ -97,22 +102,39 @@ $(document).ready(function () {
         $(this).closest('li').addClass('active');
         init();
     });
-  
+
   $('#uploadFile').click(function(e){
     e.preventDefault();
     $('#upload').click();
   });
-  
+
   var fileInput = document.getElementById('upload');
   fileInput.addEventListener('change', function(e) {
       var file = fileInput.files[0];
+      var ext = file.name.split('.').pop();
+      if(ext === 'js')
+          lang='js';
+      else if(ext === 'c')
+          lang='c';
+      else if(ext === 'cpp')
+          lang='cpp';
+      else if(ext === 'java')
+          lang='java';
+      else if(ext === 'py')
+          lang='py2';
+      else
+          lang='c';
+      $("#panelLang").html(langName[lang]);
       var reader = new FileReader();
       reader.onload = function(e) { // closure to set read data to editor
           ace.edit("editor").setValue(reader.result);
       }
-      reader.readAsText(file);	
+      reader.readAsText(file);
+      console.log("File Upload Success!");
+      console.log("Language =" +lang);
+      ifUpload=1;
   });
-  
+
 });
 
 //toggle full-screen mode
@@ -121,6 +143,7 @@ $(document).ready(function () {
    var fs=false;
    $("#panel-fullscreen").click(function (e) {
      e.preventDefault();
+
      fs=!fs;
      var elem = document.body;
      if(fs)
@@ -147,6 +170,14 @@ $(document).ready(function () {
     });
 });
 
+var langName = {
+    c: "C",
+    cpp: "C++",
+    java: "Java",
+    py2: "Python",
+    js : "JavaScript"
+};
+
 function requestFullScreen(element) {
     var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
 
@@ -170,4 +201,3 @@ function exitFullScreen()
     else if (document.webkitExitFullscreen)
         document.webkitExitFullscreen();
 }
-
