@@ -1673,7 +1673,9 @@ footer.bg-dark a {
         display: block;
         max-width: 100%;
     }
-
+    .flogo{
+        display: none!important;
+    }
     .footer-1{
         padding-left: 5%!important;
         padding-right: 5%!important;
@@ -1696,7 +1698,7 @@ footer.bg-dark a {
 }
 
 #editor.change_height {
-  height: 89%;
+  height: 92.5%!important;
 }
 
 .panel-actions {
@@ -1712,9 +1714,13 @@ footer.bg-dark a {
   height : 0px;
   display :none;
 }
+.hide{
+  height: 0px;
+  display:none;
+}
 
 .panel-fullscreen {
-  z-index: 9999;
+  z-index: 1020;
   width: 100%;
   height: 101%;
   position: fixed;
@@ -1728,10 +1734,19 @@ footer.bg-dark a {
   left : -5px;
 }
 
+#copyBtn {
+    top: -30px;
+    right: 10px;
+
+}
 .sidecol {
     max-width: 100%;
     margin-left: 0;
     margin-right: 0;
+}
+
+.headPanel{
+    height: 55px; !important;
 }
 
 @media (max-width: 970px){
@@ -1742,8 +1757,93 @@ footer.bg-dark a {
         padding-right: 0px!important;
         width: 90% !important;
     }
+    .heading{
+        height:90%; !important;
+    }
 }
-    
+
+
+@media (min-width: 893px) and (max-width: 1200px) {
+    .headPanel{
+        height: 120px; !important;
+    }
+}
+
+.headPanel.fullscreen{
+    height:55px; !important;
+}
+@media (max-width: 394px){
+    .panelTopOptions{
+        margin-bottom: 30px;
+    }
+    .panelTopButton{
+        display: inline-block;!important;
+        margin-top: 20px!important;
+        margin-left: 0!important;
+        margin-right: 0!important;
+        margin-bottom: 0!important;
+        float: none!important;
+    }
+    .panelTopTextbox{
+        width: 100%!important;
+        margin-bottom: 20px!important;
+    }
+}
+
+.btn-modal {
+    display: inline-block;
+    background: rgb(255, 255, 255);
+    border-color: rgb(252, 79, 79);
+}
+
+.modal-dialog{
+    overflow-y: initial !important
+}
+
+.modal-body {
+    height: 100%;
+    overflow-y: auto;
+    font-size: 18px;
+}
+
+.modal-group {
+    width: auto;
+    float: left;
+    margin-left: 1%;
+}
+
+.modal-dropdown {
+    position: relative;
+    z-index: 1050;
+    float: none;
+    min-width: 0px;
+    width: 100%;
+    top: 0px;
+    margin: 0px !important;
+}
+
+textarea {
+    font-size: 14px;
+    line-height: 27px;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: rgb(221, 221, 221) !important;
+    border-image: initial !important;
+    border-radius: 4px !important;
+    padding: 3px 5px !important;
+    background: rgb(245, 245, 245) !important;
+}
+.autoSaveText{
+    font-size: 15px;
+    line-height: 27px;
+    font-style: italic;
+    transition: 2s;
+    display: none;
+    -webkit-transition: opacity 2.0s ease-in;
+    -moz-transition: opacity 2.0s ease-in;
+    -o-transition: opacity 2.0s ease-in;
+    opacity: 1;
+}
 @media  (min-width: 970px){
     #editor{
         min-height: 510px;

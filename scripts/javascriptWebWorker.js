@@ -5,6 +5,7 @@
 
 onmessage = function (e) {
     var output = [];
+    var INPUT = JSON.parse(e.data.input);
     try {
         eval(`
             console.log = function(str){

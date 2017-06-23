@@ -26,7 +26,11 @@ var py2_sample =
         'print("Hello World!")';
 
 var js_sample =
-    `console.log('Hello World');`;
+`/* 
+    Use INPUT variable to get stdin.
+    Try console.log(INPUT);
+*/
+    console.log('Hello World');`;
 
 var lang_samples = {
     c: c_sample,
