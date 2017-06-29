@@ -1844,3 +1844,11 @@ textarea {
     -o-transition: opacity 2.0s ease-in;
     opacity: 1;
 }
+@media  (min-width: 970px){
+    #editor{
+        min-height: 510px;
+    }
+    #code_editor{
+        margin-bottom: 50px;
+    }
+}
